@@ -1,14 +1,14 @@
-wget https://s3.ap-northeast-2.amazonaws.com/global.semi.static/SAMSUNG_BRAND_SSD_980PRO_ISO/FW/E2512E718DB3E7EWGAJLDA8A7108M1Y2D9M9090J2KIA55338/Samsung_SSD_980_PRO_3B2QGXA7.iso
+cd ~/tmp
 
-mkdir /mnt/iso
+wget ...
 
-sudo mount -o loop ./Samsung_SSD_980_PRO_3B2QGXA7.iso /mnt/iso/
+mkdir loop
 
-mkdir /tmp/fwupdate
+sudo mount -o loop Samsung_SSD_980_PRO_3B2QGXA7.iso loop
 
-cd /tmp/fwupdate
+cd loop
 
-gzip -dc /mnt/iso/initrd | cpio -idv --no-absolute-filenames
+gzip -dc initrd | cpio -idv --no-absolute-filenames
 
 cd root/fumagician/
 
