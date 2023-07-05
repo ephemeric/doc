@@ -1,29 +1,4 @@
-# SSH
-
-## LPF
-
-Host rocky9.ephemeric.lan
-    User robertg
-    Hostname 192.168.0.102
-    #IdentityFile ~/.ssh/id_rsa
-    # Option '-L'.
-    LocalForward 127.0.0.1:8080 127.0.0.1:8080
-    ServerAliveCountMax 3
-    ServerAliveInterval 15
-    ExitOnForwardFailure yes
-    # Option '-f'.
-    #ForkAfterAuthentication yes
-    # Option '-N'.
-    #SessionType none
-    
-## SOCKS
-
-export http_proxy=socks5[h]://127.0.0.1:8080 https_proxy=socks5[h]://127.0.0.1:8080
-
-## AutoSSH
-
-### Server: /etc/ssh/sshd_config.
-
+# Server: /etc/ssh/sshd_config.
 Match User c2
   AuthenticationMethods   publickey
   HostbasedAuthentication no
@@ -38,7 +13,7 @@ Match User c2
   ForceCommand            /sbin/nologin
   PermitOpen              172.16.7.131:2224
 
-### Client: /etc/ssh/sshd_config.
+## Client: /etc/ssh/sshd_config.
 
 ```
 ClientAliveInterval 20
@@ -46,9 +21,9 @@ ClientAliveCountMax 3
 AllowUsers c2@127.0.0.1
 ```
 
-Crontab.
-
+### crontab.
 ```
 MAILTO=""
 * * * * * (ssh -p 443 -fNR 127.0.0.1:4450:127.0.0.1:22 c2@197.15.100.245 &>/dev/null &)  
 ```
+
