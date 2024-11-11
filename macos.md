@@ -42,6 +42,26 @@ Straight copy:
 
 sudo networksetup -setdhcp Home; sudo networksetup -setdnsservers Home empty; sudo networksetup -setsearchdomains Home empty
 
+Add routes:
+
+sudo networksetup -setadditionalroutes "Home" 192.168.235.0 255.255.255.0 192.168.0.3
+
+sudo networksetup -getadditionalroutes "Home"                                                 +
+
+192.168.235.0 255.255.255.0 192.168.0.3
+
+Remove routes:
+
+sudo networksetup -setadditionalroutes "Home"
+
+sudo networksetup -getadditionalroutes "Home"                                                 +
+
+There are no additional IPv4 routes on Home.
+
+### DNS
+
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
 ### Homebrew
 
 Multi user? No.
